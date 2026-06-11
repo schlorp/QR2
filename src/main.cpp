@@ -50,7 +50,7 @@ int main()
 
 // - add more options for qr code generation (error correction level, size, color, logo, etc.)
 //      - QR code Size: add option to choose the size of the generated qr code, as in how many pixels each module (square) of the qr code should be, this will allow users to generate larger or smaller qr codes based on their needs
-//      - Color options: add options to customize the colors of the qr code, such as the color of the modules and the background color, this will allow users to create more visually appealing qr codes that match their branding or personal style
+//      - Color options: add options to customize the colors of the qr code, such as the color of the modules and the background color - check
 //      - Logo embedding: add option to embed a logo or image in the center of the qr code, this is a popular feature that allows users to personalize their qr codes and make them more recognizable, it can be implemented by allowing users to upload an image and then overlaying it on top of the generated qr code while ensuring that the qr code remains scannable
 //      - Error correction level: add option to choose the error correction level of the generated qr code, this will allow users to create qr codes that are more resilient to damage or distortion, the error correction level can be implemented by allowing users to select from different levels (L, M, Q, H) which correspond to different amounts of error correction data being included in the qr code, higher levels will make the qr code more robust but also increase its size
 // - add error handling for file operations and qr code generation
