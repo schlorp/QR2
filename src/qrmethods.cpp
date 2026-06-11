@@ -5,7 +5,7 @@ QrCode QRMethods::EncodeText(char *text, QrCode::Ecc errCorLvl){
 	return qr;
 }
 
-Texture2D* QRMethods::DrawQRToTexture(QrCode* qr, int qrModuleScale){
+Texture2D* QRMethods::DrawQRToTexture(QrCode* qr, int qrModuleScale, Color* qrColor){
     int qrCodeSize = qr->getSize();
     int qrCodeScale = qrModuleScale;
     int width = qrCodeSize * qrCodeScale;
@@ -18,7 +18,7 @@ Texture2D* QRMethods::DrawQRToTexture(QrCode* qr, int qrModuleScale){
             int qrX = x / qrCodeScale;
             int qrY = y / qrCodeScale;
             bool isDark = qr->getModule(qrX, qrY);
-            pixels[y * width + x] = isDark ? BLACK : WHITE;
+            pixels[y * width + x] = isDark ? *qrColor : WHITE;
         }
     }
 

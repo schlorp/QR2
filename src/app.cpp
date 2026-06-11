@@ -12,7 +12,7 @@ App::App(){
 	qrColor = new Color{ 0, 0, 0, 255 };
 
 	textInputBox = CustomTextInputBox(Rectangle{ 350, 70, 250, 250 }, "Text Input Box", "Enter text or URL:", "OK;Cancel", textValuePtr, 100, 0);
-	qrPanel = QRPanel(100, 100, 200, 220);
+	qrPanel = QRPanel(100, 100, 200, 220, qrColor);
 	colorPanel = ColorPanel(qrColor, 200, 200, Vector2{ 100, 100 });
 }
 

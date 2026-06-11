@@ -1,10 +1,11 @@
 #include "qrpanel.h"
 #include "raygui.h"
 
-QRPanel::QRPanel(int _x, int _y, int _width, int _height) {
+QRPanel::QRPanel(int _x, int _y, int _width, int _height, Color* _qrColor) {
 	panelPosition = { (float)_x, (float)_y };
 	width = _width;
 	height = _height;
+	qrColor = _qrColor;
 
 	downloadButtonSize = { 120, 30 };
 }
@@ -14,7 +15,7 @@ QRPanel::~QRPanel() {
 
 void QRPanel::GenerateQRForPanel(char* text) {
 	QrCode qr = QRMethods::EncodeText(text, QrCode::Ecc::LOW);
-    qrTexture = QRMethods::DrawQRToTexture(&qr, 10);
+    qrTexture = QRMethods::DrawQRToTexture(&qr, 10, qrColor);
 }
 
 const char* QRPanel::GetPreferredFilePath() {
