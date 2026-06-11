@@ -14,6 +14,7 @@ add_executable(${PROJECT_NAME}
     src/qrpanel.cpp
     src/customtextinputbox.cpp
     src/app.cpp
+    src/colorpanel.cpp
 )
 
 target_include_directories(${PROJECT_NAME} PRIVATE
