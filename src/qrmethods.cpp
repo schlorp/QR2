@@ -32,6 +32,7 @@ Texture2D* QRMethods::DrawQRToTexture(QrCode* qr, int qrModuleScale, Color* qrCo
     Texture2D* texture = new Texture2D;
     *texture = LoadTextureFromImage(img);
 
-    delete[] pixels;
+    UnloadImage(img);
+
     return texture;
 };
