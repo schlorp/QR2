@@ -1,8 +1,9 @@
 #include "customtextinputbox.h"
 #include "raygui.h"
-#include <iostream>
 
-CustomTextInputBox::CustomTextInputBox(Rectangle bounds, const char* title, const char* message, const char* buttons, char* textValue, int textValueMaxLen, bool *secretViewActive) {
+CustomTextInputBox::CustomTextInputBox(Rectangle bounds, const char* title, const char* message, const char* buttons, 
+	char* textValue, int textValueMaxLen, bool *secretViewActive) {
+
 	this->width = (int)bounds.width;
 	this->height = (int)bounds.height;
 	this->panelPosition = { bounds.x, bounds.y };
@@ -13,6 +14,8 @@ CustomTextInputBox::CustomTextInputBox(Rectangle bounds, const char* title, cons
 	this->textValue = textValue;
 	this->textValueMaxLen = textValueMaxLen;
 	this->secretViewActive = secretViewActive;
+
+	this->errorCorrectionLevel = QrCode::Ecc::LOW;
 
 	this->textValue[0] = 0;
 }
@@ -81,4 +84,19 @@ int CustomTextInputBox::GetResult() const {
 	}
 	
 	return result;
+}
+
+QrCode::Ecc CustomTextInputBox::GetErrorCorrectionLevel() const {
+	switch (*selectedOption) {
+		case 0:
+			return QrCode::Ecc::LOW;
+		case 1:
+			return QrCode::Ecc::MEDIUM;
+		case 2:
+			return QrCode::Ecc::QUARTILE;
+		case 3:
+			return QrCode::Ecc::HIGH;
+		default:
+			return QrCode::Ecc::LOW;
+	}
 }

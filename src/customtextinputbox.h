@@ -1,10 +1,16 @@
 #pragma once
 
 #include "draggablepanel.h"
+#include <iostream>
+#include "qrcodegen.hpp"
+
+using namespace qrcodegen;
 
 class CustomTextInputBox : public DraggablePanel {
 public:
-	CustomTextInputBox(Rectangle bounds, const char* title, const char* message, const char* buttons, char* textValue, int textValueMaxLen, bool *secretViewActive);
+	CustomTextInputBox(Rectangle bounds, const char* title, const char* message, const char* buttons, 
+		char* textValue, int textValueMaxLen, bool *secretViewActive);
+
 	CustomTextInputBox() = default;
 	
 	~CustomTextInputBox();
@@ -14,6 +20,8 @@ public:
 	void Draw();
 
 	int GetResult() const;
+	
+	QrCode::Ecc GetErrorCorrectionLevel() const;
 private:
 	const char* title;
 	const char* message;
@@ -27,4 +35,6 @@ private:
 
 	bool dropDownEdit = false;
 	bool textBoxEdit = false;
+
+	QrCode::Ecc errorCorrectionLevel;
 };

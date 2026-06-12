@@ -11,7 +11,7 @@ public:
 	QRPanel() = default;
 	~QRPanel();
 
-	void GenerateQRForPanel(char* text);
+	void GenerateQRForPanel(char* text, QrCode::Ecc errorCorrectionLevel);
 
 	const char* GetPreferredFilePath();
 	void ExportQRAsPNG();

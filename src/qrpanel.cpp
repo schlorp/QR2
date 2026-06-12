@@ -13,8 +13,8 @@ QRPanel::QRPanel(int _x, int _y, int _width, int _height, Color* _qrColor) {
 QRPanel::~QRPanel() {
 }
 
-void QRPanel::GenerateQRForPanel(char* text) {
-	QrCode qr = QRMethods::EncodeText(text, QrCode::Ecc::LOW);
+void QRPanel::GenerateQRForPanel(char* text, QrCode::Ecc errorCorrectionLevel) {
+	QrCode qr = QRMethods::EncodeText(text, errorCorrectionLevel);
     qrTexture = QRMethods::DrawQRToTexture(&qr, 10, qrColor);
 }
 

@@ -55,7 +55,7 @@ void App::Draw(){
 			{
 				showMessageBox = false;
 
-				qrPanel.GenerateQRForPanel(textValuePtr);
+				qrPanel.GenerateQRForPanel(textValuePtr, textInputBox.GetErrorCorrectionLevel());
 
 				showQRCode = true;
 			}
