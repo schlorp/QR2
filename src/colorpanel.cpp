@@ -34,8 +34,11 @@ void ColorPanel::CreateColorTexture(){
 	img.height = (int)colorTextureSize.y;
 	img.format = PIXELFORMAT_UNCOMPRESSED_R8G8B8A8;
 	img.mipmaps = 1;
-	
+
+	UnloadTexture(*colorTexture);
 	*colorTexture = LoadTextureFromImage(img);
+
+	UnloadImage(img);
 }
 
 void ColorPanel::Draw(){
