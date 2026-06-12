@@ -67,7 +67,7 @@ void CustomTextInputBox::Draw() {
 	GuiWindowBox(Rectangle{ panelPosition.x, panelPosition.y, (float)width, (float)height }, title);
 
 	GuiLabel(Rectangle{ panelPosition.x + 10, panelPosition.y + 30, (float)width - 20, 20 }, message);
-	if (GuiTextBox(Rectangle{ panelPosition.x + 10, panelPosition.y + 50, (float)width - 20, 20 }, textValue, 10, textBoxEdit))
+	if (GuiTextBox(Rectangle{ panelPosition.x + 10, panelPosition.y + 50, (float)width - 20, 20 }, textValue, textValueMaxLen, textBoxEdit))
 		textBoxEdit = !textBoxEdit; 
 
 	GuiLabel(Rectangle{ panelPosition.x + 10, panelPosition.y + 70, (float)width - 20, 20 }, "Error correction level:");
