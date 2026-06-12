@@ -35,6 +35,9 @@ const char* QRPanel::GetPreferredFilePath() {
 void QRPanel::ExportQRAsPNG() {
 	const char* savePath = GetPreferredFilePath();
 
+	if (savePath == nullptr)
+		return;
+
 	Image qrImage = LoadImageFromTexture(*qrTexture);
 	bool exported = ExportImage(qrImage, savePath);
 	UnloadImage(qrImage);
