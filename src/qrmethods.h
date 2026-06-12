@@ -6,5 +6,5 @@ using namespace qrcodegen;
 namespace QRMethods{
 	QrCode EncodeText(char *text, QrCode::Ecc errCorLvl);
 	
-	Texture2D* DrawQRToTexture(QrCode* qr, int qrModuleScale);
+	Texture2D* DrawQRToTexture(QrCode* qr, int qrModuleScale, Color* qrColor);
 };

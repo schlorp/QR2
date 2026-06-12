@@ -7,11 +7,11 @@
 
 class QRPanel : public DraggablePanel {
 public:
-	QRPanel(int _x, int _y, int _width, int _height);
+	QRPanel(int _x, int _y, int _width, int _height, Color* _qrColor);
 	QRPanel() = default;
 	~QRPanel();
 
-	void GenerateQRForPanel(char* text);
+	void GenerateQRForPanel(char* text, QrCode::Ecc errorCorrectionLevel);
 
 	const char* GetPreferredFilePath();
 	void ExportQRAsPNG();
@@ -24,7 +24,8 @@ public:
 
 protected:
 	Texture2D* qrTexture;
-	
+	Color* qrColor;
+
 	Vector2 downloadButtonSize;
 
 	float drawSavedTextTime = 2; // time in milliseconds
