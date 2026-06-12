@@ -9,6 +9,8 @@ public:
 	
 	~CustomTextInputBox();
 
+	void CreateButtons();
+
 	void Draw();
 
 	int GetResult() const;
@@ -20,5 +22,9 @@ private:
 	int textValueMaxLen;
 	bool *secretViewActive;
 
-	int result = 0; // 0 = no result, 1 = first button, 2 = second button, etc.
+	int result = -1; // 0 = no result, 1 = first button, 2 = second button, etc.
+	int* selectedOption = new int(0);
+
+	bool dropDownEdit = false;
+	bool textBoxEdit = false;
 };

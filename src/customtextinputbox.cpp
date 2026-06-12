@@ -20,8 +20,57 @@ CustomTextInputBox::CustomTextInputBox(Rectangle bounds, const char* title, cons
 CustomTextInputBox::~CustomTextInputBox() {
 }
 
+void CustomTextInputBox::CreateButtons() {
+	int buttonCount = 0;
+	const char* tempButtons = buttons;
+	while (*tempButtons) {
+		if (*tempButtons == ';') {
+			buttonCount++;
+		}
+		tempButtons++;
+	}
+	buttonCount++; // for the last button
+
+	int buttonWidth = (width - 20) / buttonCount; // 10 padding on each side
+
+	for (int i = 0; i < buttonCount; i++) {
+		const char* buttonText = buttons;
+		for (int j = 0; j < i; j++) {
+			while (*buttonText && *buttonText != ';') {
+				buttonText++;
+			}
+			if (*buttonText == ';') {
+				buttonText++;
+			}
+		}
+
+		char buttonLabel[64];
+		int labelIndex = 0;
+		while (*buttonText && *buttonText != ';' && labelIndex < 63) {
+			buttonLabel[labelIndex++] = *buttonText;
+			buttonText++;
+		}
+		buttonLabel[labelIndex] = '\0';
+
+		if (GuiButton(Rectangle{ panelPosition.x + 15 + i * buttonWidth, panelPosition.y + height - 45, (float)buttonWidth - 10, 30 }, buttonLabel)) {
+			result = i + 1; // Button indices start at 0
+		}
+	}
+}
+
 void CustomTextInputBox::Draw() {
-	result = GuiTextInputBox(Rectangle{ panelPosition.x, panelPosition.y, (float)width, (float)height }, title, message, buttons, textValue, textValueMaxLen, secretViewActive);
+	result = -1; // reset result each frame
+
+	GuiWindowBox(Rectangle{ panelPosition.x, panelPosition.y, (float)width, (float)height }, title);
+
+	GuiLabel(Rectangle{ panelPosition.x + 10, panelPosition.y + 30, (float)width - 20, 20 }, message);
+	if (GuiTextBox(Rectangle{ panelPosition.x + 10, panelPosition.y + 50, (float)width - 20, 20 }, textValue, 10, textBoxEdit))
+		textBoxEdit = !textBoxEdit; 
+
+	if (GuiDropdownBox(Rectangle{ panelPosition.x + 10, panelPosition.y + 90, (float)width - 20, 20 }, "LOW;MEDIUM;QUARTILE;HIGH", selectedOption, dropDownEdit)) 
+		dropDownEdit = !dropDownEdit;
+
+	CreateButtons();
 }
 
 int CustomTextInputBox::GetResult() const {
