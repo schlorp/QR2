@@ -5,6 +5,7 @@
 #include "QRPanel.h"
 #include "CustomTextInputBox.h"
 #include "colorpanel.h"
+#include <iostream>
 
 using namespace qrcodegen;
 
@@ -25,6 +26,7 @@ private:
 	char* textValuePtr;
 
 	Color* qrColor;
+	std::unique_ptr<Color> qrColorptr;
 
 	QrCode::Ecc errorCorrectionLevel = QrCode::Ecc::LOW;
 
