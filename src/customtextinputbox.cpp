@@ -67,6 +67,7 @@ void CustomTextInputBox::Draw() {
 	if (GuiTextBox(Rectangle{ panelPosition.x + 10, panelPosition.y + 50, (float)width - 20, 20 }, textValue, 10, textBoxEdit))
 		textBoxEdit = !textBoxEdit; 
 
+	GuiLabel(Rectangle{ panelPosition.x + 10, panelPosition.y + 70, (float)width - 20, 20 }, "Error correction level:");
 	if (GuiDropdownBox(Rectangle{ panelPosition.x + 10, panelPosition.y + 90, (float)width - 20, 20 }, "LOW;MEDIUM;QUARTILE;HIGH", selectedOption, dropDownEdit)) 
 		dropDownEdit = !dropDownEdit;
 
